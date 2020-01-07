@@ -17,10 +17,11 @@ class PapeletaController extends Controller
                                 'papeletas.estado_actual')
                               ->join('infracciones', 'infracciones.idinfracciones', '=', 'papeletas.codigo_infraccion')
                               ->where('nro_licencia', '=', $number)
-                              ->get();
+                              ->first();
 
         if($papeleta){
-            return response()->json($papeleta);
+            
+            return $papeleta;
         }
         
         return response()->json([
