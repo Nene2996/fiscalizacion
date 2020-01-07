@@ -16,8 +16,7 @@ class PapeletaController extends Controller
                                 'infracciones.monto_multa as monto_infraccion', 
                                 'papeletas.estado_actual')
                               ->join('infracciones', 'infracciones.idinfracciones', '=', 'papeletas.codigo_infraccion')
-                              ->where('nro_licencia', '=', $number)
-                              ->get();
+                              ->where('nro_licencia', '=', $number);
 
         if($papeleta){
             
