@@ -28,4 +28,8 @@ class PapeletaController extends Controller
             'message' => 'El usuario no tiene papeletas',
         ], 500);
     }
+
+    public function get(){
+        return 0;
+    }
 }
