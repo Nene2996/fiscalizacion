@@ -16,7 +16,7 @@ class PapeletaController extends Controller
                                 'infracciones.monto_multa as monto_infraccion', 
                                 'papeletas.estado_actual')
                               ->join('infracciones', 'infracciones.idinfracciones', '=', 'papeletas.codigo_infraccion')
-                              ->where('nro_licencia', '=', $number);
+                              ->where('nro_licencia', '=', $number)->first();
 
         if($papeleta){
             
@@ -29,7 +29,20 @@ class PapeletaController extends Controller
         ], 500);
     }
 
-    public function get(){
-        return 0;
+    public function getCursosUsuario($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $cursos = $user->cursos;
+            $cursosResponse = collect([]);
+            $cursos->each(function ($item, $key) use ($cursosResponse) {
+                $cursosResponse->push(Curso::where("id", $item->id)->with("categoria", "profesor")->first());
+            });
+            return response()->json($cursosResponse->all());
+        }
+        return response()->json([
+            'status'  => 500,
+            'message' => 'El usuario no existe',
+        ], 500);
     }
 }
