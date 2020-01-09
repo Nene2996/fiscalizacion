@@ -22,6 +22,7 @@ class Infraccion extends Model
     ];
 
     public function papeletas(){
-        return $this->hasMany(Papeleta::class);
+        return $this->hasMany(Papeleta::class, 'idinfracciones');
     }
+    
 }

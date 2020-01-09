@@ -9,3 +9,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/papeletas/{numberlicence}/papeleta', 'Api\PapeletaController@searchLicence');
+Route::get('/papeletas', 'Api\PapeletaController@list');

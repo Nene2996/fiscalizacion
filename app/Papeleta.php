@@ -44,6 +44,7 @@ class Papeleta extends Model
 
     public function infraccion()
     {
-        $this->belongsTo(Infraccion::class);
+        $this->belongsTo(Infraccion::class, 'codigo_infraccion', 'idinfracciones');
     }
+    
 }
