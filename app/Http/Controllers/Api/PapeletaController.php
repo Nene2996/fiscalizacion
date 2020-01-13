@@ -21,7 +21,8 @@ class PapeletaController extends Controller
                                 'infracciones.monto_multa as monto_infraccion', 'infracciones.sancion_administrativa',
                                 'papeletas.estado_actual')
                               ->join('infracciones', 'infracciones.id', '=', 'papeletas.codigo_infraccion')
-                              ->where('nro_licencia', $number)->get()->toArray();
+                              ->where('nro_licencia', $number)
+                              ->orderBy('papeletas.fecha_infraccion', 'ASC')->get()->toArray();
 
 
         if($papeleta){
@@ -55,7 +56,7 @@ class PapeletaController extends Controller
                                  ->join('infracciones', 'infracciones.id', '=', 'papeletas.codigo_infraccion')
                                  ->where('placa_vehiculo', $plate)
                                  ->where('infracciones.agente_infractor', 'Transportista')
-                                 ->get()->toArray();
+                                 ->orderBy('papeletas.fecha_infraccion', 'ASC')->get()->toArray();
 
         if($infracccion){
             return response()->json($infracccion);
