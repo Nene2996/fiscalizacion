@@ -9,4 +9,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/papeletas/{numberlicence}/papeleta', 'Api\PapeletaController@searchLicence');
-Route::get('/papeletas', 'Api\PapeletaController@list');
+Route::get('/inspectores', 'Api\PapeletaController@inpectores');
+Route::get('/infracciones/{platenumber}/infraccion', 'Api\PapeletaController@searchPlate');
+
