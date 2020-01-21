@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -75,80 +75,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <div class="container">
-        <div class="card">
-            <div class="card-header">
-               <strong> CONSULTA DE INFRACCIONES AL REGLAMENTO NACIONAL DE TRANSITO </strong>
-            </div>
-            <div class="card-body">
-            
-                <form id="form">
-                @csrf
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="numerolicencia">NÚMERO DE LICENCIA:</label>
-                            <input type="text" name="numerolicencia" class="form-control form-control-sm" id="numerolicencia">
-                        </div>
-                        
-                        <div class="form-group col-md-4">
-                            <button type="submit" class="btn btn-primary my-4">Buscar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        </br>
-        <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">  
-                    <table   class="table table-sm table-hover table-bordered">
-                        <thead>
-                            <tr bgcolor= "#f7ba66" border="2px">
-                            <th scope="col">Nombre</th>
-                            <th scope="col">DNI</th>
-                            <th scope="col">Número de Licencia</th>
-                            <th scope="col">Categoría de Licencia</th>                        
-                            </tr>
-                        </thead>
-                        <tbody id="contenido">
-                            
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-        </div>
-        </div>
     </div>
 </body>
 </html>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-<script>
-
-
-
-    document.getElementById('form').addEventListener('submit', fetchInformationData);
-
-
-    function fetchInformationData(event){
-        event.preventDefault();
-        console.log('Hey nene me diste un click');
-
-        let numeroLicencia = document.getElementById('numerolicencia').value;
-        console.log(EnterpriseName);
-
-        if (EnterpriseName == '') {
-            alert('Tiene que ingresar el nombre de la empresa');
-        }else{
-            fetch(`/infracciones/${numeroLicencia}/infraccion`)
-            .then()
-            .then()
-            .cath()
-        }
-    }
-</script>
-
-
